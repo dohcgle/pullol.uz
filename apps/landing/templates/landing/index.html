@@ -1,0 +1,766 @@
+{% extends 'landing/base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="home"
+    class="relative bg-gradient-to-r from-primary to-purple-700 text-white py-24 lg:py-32 overflow-hidden">
+    <!-- Abstract shapes -->
+    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-accent opacity-20 blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-pink-500 opacity-20 blur-3xl"></div>
+
+    <div class="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
+            <span
+                class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur-sm text-sm font-semibold mb-4 border border-white/30">
+                🚀 Tez va Oson Kredit
+            </span>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight tracking-tight">
+                Moliyaviy <br>
+                <span class="text-accent">Erkinlik</span> Sari Yo'l
+            </h1>
+            <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
+                Pullol bilan orzularingizni ro'yobga chiqarish endi yanada oson. Garovsiz, tezkor va shaffof
+                mikrokreditlar.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <a href="#application"
+                    class="bg-accent hover:bg-amber-400 text-gray-900 font-bold py-4 px-8 rounded-xl shadow-lg shadow-amber-500/30 transform transition hover:-translate-y-1 hover:shadow-xl text-lg flex items-center justify-center gap-2">
+                    <i class="fas fa-paper-plane"></i> Ariza Topshirish
+                </a>
+                <a href="#calculator"
+                    class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 font-bold py-4 px-8 rounded-xl transition-all flex items-center justify-center gap-2">
+                    <i class="fas fa-calculator"></i> Hisoblash
+                </a>
+            </div>
+
+            <div class="mt-8 flex items-center justify-center md:justify-start gap-6 text-sm text-blue-200">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-check-circle text-accent"></i> 5 daqiqada
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-check-circle text-accent"></i> Pasport kifoya
+                </div>
+            </div>
+        </div>
+        <div class="md:w-1/2 relative">
+            <img src="https://images.unsplash.com/photo-1579621970795-87facc2f976d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="Happy Customer"
+                class="rounded-3xl shadow-2xl relative z-10 transform md:rotate-3 hover:rotate-0 transition-transform duration-500 border-8 border-white/10">
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!-- Calculator Section -->
+<section id="calculator" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Kredit Kalkulyatori</h2>
+            <p class="text-gray-600 max-w-xl mx-auto">Siz uchun eng qulay to'lov rejasini hoziroq hisoblang.</p>
+        </div>
+
+        <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+            <div class="grid grid-cols-1 md:grid-cols-12">
+                <!-- Form Area -->
+                <div class="p-8 md:col-span-5 bg-white">
+                    <form id="loan-form" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Kredit summasi (so'm)</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-primary text-xl"><i
+                                        class="fas fa-coins"></i></span>
+                                <input type="text" id="amount-formatted" placeholder="5 000 000"
+                                    class="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-primary/20 focus:border-accent focus:ring-4 focus:ring-accent/20 outline-none transition-all bg-white font-bold text-xl text-gray-800 tracking-wide shadow-inner"
+                                    required oninput="formatAmountInput(this)">
+                                <input type="hidden" id="amount" value="5000000">
+                            </div>
+                            <div class="flex justify-between mt-2 text-xs font-bold text-gray-400">
+                                <span>Min: 1 000 000</span>
+                                <span>Max: 100 000 000</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Muddat (oy)</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-primary text-lg"><i
+                                        class="fas fa-calendar-alt"></i></span>
+                                <select id="months"
+                                    class="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-gray-200 focus:border-accent focus:ring-4 focus:ring-accent/20 outline-none transition-all bg-white font-bold text-lg text-gray-800 appearance-none shadow-sm cursor-pointer hover:border-primary/30">
+                                    <option value="6">6 oy</option>
+                                    <option value="12" selected>12 oy</option>
+                                    <option value="24">24 oy</option>
+                                    <option value="36">36 oy</option>
+                                </select>
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-primary">
+                                    <svg class="fill-current h-6 w-6" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hidden">
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Yillik foiz</label>
+                            <div
+                                class="w-full px-4 py-3 rounded-xl bg-blue-50 border border-blue-100 text-primary font-bold flex justify-between items-center">
+                                <span>55%</span>
+                                <i class="fas fa-percent text-blue-300"></i>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-3">Hisoblash usuli</label>
+                            <div class="flex space-x-3 bg-gray-100 p-1.5 rounded-xl">
+                                <label
+                                    class="flex-1 flex items-center justify-center space-x-2 cursor-pointer p-3 rounded-lg hover:bg-white/80 w-full transition-all peer-checked:bg-white peer-checked:text-primary peer-checked:shadow-md text-gray-500 font-medium relative overflow-hidden group">
+                                    <input type="radio" name="method" value="annuity" checked class="peer sr-only">
+                                    <span
+                                        class="relative z-10 group-hover:scale-105 transition-transform">Annuitet</span>
+                                    <div
+                                        class="absolute inset-0 bg-white opacity-0 peer-checked:opacity-100 transition-opacity rounded-lg shadow-sm">
+                                    </div>
+                                </label>
+                                <label
+                                    class="flex-1 flex items-center justify-center space-x-2 cursor-pointer p-3 rounded-lg hover:bg-white/80 w-full transition-all peer-checked:bg-white peer-checked:text-primary peer-checked:shadow-md text-gray-500 font-medium relative overflow-hidden group">
+                                    <input type="radio" name="method" value="differential" class="peer sr-only">
+                                    <span
+                                        class="relative z-10 group-hover:scale-105 transition-transform">Differensial</span>
+                                    <div
+                                        class="absolute inset-0 bg-white opacity-0 peer-checked:opacity-100 transition-opacity rounded-lg shadow-sm">
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="button" onclick="calculateLoan()"
+                            class="w-full bg-gradient-to-r from-accent to-amber-500 hover:from-amber-400 hover:to-orange-500 text-white font-extrabold py-5 px-6 rounded-xl shadow-lg shadow-amber-500/40 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl flex items-center justify-center gap-3 text-xl group relative overflow-hidden">
+                            <span class="relative z-10">💰 Kreditni Hisoblash</span>
+                            <div
+                                class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:animate-shine">
+                            </div>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Result Area -->
+                <div class="p-8 md:col-span-7 bg-white border-l border-gray-100 flex flex-col relative overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-primary/10 to-purple-500/10 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none animate-pulse">
+                    </div>
+
+                    <div id="welcome-message"
+                        class="flex-grow flex flex-col items-center justify-center text-center text-gray-400 py-10 relative z-10">
+                        <div
+                            class="w-28 h-28 bg-gradient-to-br from-gray-50 to-gray-100 rounded-full flex items-center justify-center shadow-inner mb-6 border border-gray-100">
+                            <i class="fas fa-hand-holding-usd text-5xl text-gray-300"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-600 mb-2">Sizning Imkoniyatingiz</h4>
+                        <p class="text-gray-400 max-w-xs mx-auto">Kredit ma'lumotlarini kiriting va qancha
+                            to'lashingizni bilib oling</p>
+                    </div>
+
+                    <div id="result" class="hidden h-full flex flex-col relative z-10">
+                        <div
+                            class="flex flex-col md:flex-row justify-between items-stretch gap-6 mb-8 pb-6 border-b border-gray-100">
+                            <div
+                                class="bg-gradient-to-br from-primary to-purple-600 p-6 rounded-2xl text-white shadow-xl flex-1 transform transition hover:scale-[1.02]">
+                                <p class="text-blue-100 text-sm font-medium mb-1 uppercase tracking-wider">Taxminiy
+                                    oylik to'lov</p>
+                                <h3 id="monthly-payment-display"
+                                    class="text-4xl md:text-5xl font-black tracking-tight drop-shadow-md">0 so'm</h3>
+                                <p class="text-xs text-blue-200 mt-2 opacity-80">* Bu faqat taxminiy hisob-kitob</p>
+                            </div>
+                            <div
+                                class="bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-center flex-1">
+                                <p class="text-gray-500 text-sm font-bold mb-1 uppercase tracking-wider">Jami
+                                    qaytariladigan summa</p>
+                                <h3 id="total-payment-info" class="text-2xl md:text-3xl font-bold text-gray-800">0 so'm
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto overflow-y-auto max-h-[400px] pr-2 custom-scrollbar flex-grow">
+                            <table class="w-full text-sm text-left border-collapse min-w-[500px] md:min-w-0">
+                                <thead
+                                    class="text-[10px] md:text-xs text-gray-500 uppercase bg-gray-50 sticky top-0 z-10">
+                                    <tr>
+                                        <th class="px-2 md:px-4 py-2 md:py-3 rounded-l-lg font-bold">Oy</th>
+                                        <th class="px-2 md:px-4 py-2 md:py-3 font-bold">Qoldiq</th>
+                                        <th class="px-2 md:px-4 py-2 md:py-3 font-bold">Asosiy</th>
+                                        <th class="px-2 md:px-4 py-2 md:py-3 font-bold">Foiz</th>
+                                        <th class="px-2 md:px-4 py-2 md:py-3 rounded-r-lg font-bold">Jami</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="schedule-body" class="divide-y divide-gray-50">
+                                    <!-- Rows will be injected here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Application Form Section -->
+<section id="application" class="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <!-- Decor -->
+    <div class="absolute top-1/2 left-0 -ml-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 -mr-20 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="inline-block py-1 px-3 rounded-full bg-green-100 text-green-600 text-sm font-bold mb-4">
+                    <i class="fas fa-check"></i> 100% Online
+                </span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Orzuyingizdagi Mablag'ni Oling</h2>
+                <p class="text-gray-600 text-lg">Hozir ariza qoldiring va 15 daqiqada javob oling. Bu juda oson!</p>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-gray-100 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary via-purple-500 to-accent">
+                </div>
+
+                <form method="post" action="{% url 'index' %}#application" class="grid grid-cols-1 gap-8">
+                    {% csrf_token %}
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">To'liq ism sharifingiz <span
+                                class="text-primary">*</span></label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-primary opacity-50"><i
+                                    class="fas fa-user"></i></span>
+                            {{ form.full_name }}
+                        </div>
+                        <p class="text-xs text-gray-400 mt-1 pl-1">Masalan: Abdullayev Behzod</p>
+                        {% if form.full_name.errors %}
+                        <p class="text-red-500 text-xs mt-1">{{ form.full_name.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Telefon raqamingiz <span
+                                class="text-primary">*</span></label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-primary opacity-50"><i
+                                    class="fas fa-phone"></i></span>
+                            {{ form.phone_number }}
+                        </div>
+                        <p class="text-xs text-gray-400 mt-1 pl-1">Siz bilan bog'lanish uchun</p>
+                        {% if form.phone_number.errors %}
+                        <p class="text-red-500 text-xs mt-1">{{ form.phone_number.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Kredit summasi <span
+                                    class="text-primary">*</span></label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-primary opacity-50"><i
+                                        class="fas fa-coins"></i></span>
+                                <input type="text" id="form-credit-display"
+                                    class="w-full px-5 pl-12 py-4 rounded-xl border-2 border-gray-200 focus:border-accent focus:ring-4 focus:ring-accent/20 outline-none transition-all placeholder-gray-400 font-bold text-gray-700 bg-gray-50"
+                                    readonly>
+                                {{ form.credit_amount }}
+                            </div>
+                            <p class="text-xs text-accent font-medium mt-1 pl-1">🌟 Kalkulyatorda tanlangan summa</p>
+                            {% if form.credit_amount.errors %}
+                            <p class="text-red-500 text-xs mt-1">{{ form.credit_amount.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Yashash manzilingiz <span
+                                    class="text-primary">*</span></label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-1/2 -translate-y-1/2 text-primary opacity-50"><i
+                                        class="fas fa-map-marker-alt"></i></span>
+                                {{ form.region }}
+                                <div
+                                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-1 pl-1">Sizga eng yaqin ofisimizni aniqlaymiz</p>
+                            {% if form.region.errors %}
+                            <p class="text-red-500 text-xs mt-1">{{ form.region.errors.0 }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-4">Garov turi <span
+                                class="text-primary">*</span></label>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <!-- Car Option -->
+                            <label
+                                class="group relative flex flex-col items-center p-6 border-2 border-gray-200 rounded-2xl cursor-pointer hover:border-accent hover:bg-amber-50 transition-all has-[:checked]:border-accent has-[:checked]:bg-amber-50 has-[:checked]:shadow-lg">
+                                <input type="radio" name="collateral" value="mashina" class="peer sr-only" required>
+                                <div
+                                    class="w-14 h-14 bg-blue-100 text-primary rounded-full flex items-center justify-center mb-3 group-hover:scale-110 peer-checked:bg-accent peer-checked:text-white transition-all">
+                                    <i class="fas fa-car text-2xl"></i>
+                                </div>
+                                <span class="font-bold text-gray-700 peer-checked:text-gray-900">Avtomobil</span>
+                                <span class="text-xs text-green-500 font-medium mt-1 peer-checked:block hidden">Eng
+                                    tezkor</span>
+                                <div
+                                    class="absolute top-3 right-3 text-accent opacity-0 peer-checked:opacity-100 transition-opacity">
+                                    <i class="fas fa-check-circle text-xl"></i>
+                                </div>
+                            </label>
+
+                            <!-- Gold Option -->
+                            <label
+                                class="group relative flex flex-col items-center p-6 border-2 border-gray-200 rounded-2xl cursor-pointer hover:border-accent hover:bg-amber-50 transition-all has-[:checked]:border-accent has-[:checked]:bg-amber-50 has-[:checked]:shadow-lg">
+                                <input type="radio" name="collateral" value="tilla" class="peer sr-only">
+                                <div
+                                    class="w-14 h-14 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 peer-checked:bg-accent peer-checked:text-white transition-all">
+                                    <i class="fas fa-gem text-2xl"></i>
+                                </div>
+                                <span class="font-bold text-gray-700 peer-checked:text-gray-900">Tilla buyum</span>
+                                <span class="text-xs text-green-500 font-medium mt-1 peer-checked:block hidden">Yuqori
+                                    baho</span>
+                                <div
+                                    class="absolute top-3 right-3 text-accent opacity-0 peer-checked:opacity-100 transition-opacity">
+                                    <i class="fas fa-check-circle text-xl"></i>
+                                </div>
+                            </label>
+
+                            <!-- Home Option -->
+                            <label
+                                class="group relative flex flex-col items-center p-6 border-2 border-gray-200 rounded-2xl cursor-pointer hover:border-accent hover:bg-amber-50 transition-all has-[:checked]:border-accent has-[:checked]:bg-amber-50 has-[:checked]:shadow-lg">
+                                <input type="radio" name="collateral" value="uy_joy" class="peer sr-only">
+                                <div
+                                    class="w-14 h-14 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 peer-checked:bg-accent peer-checked:text-white transition-all">
+                                    <i class="fas fa-home text-2xl"></i>
+                                </div>
+                                <span class="font-bold text-gray-700 peer-checked:text-gray-900">Uy-joy</span>
+                                <span class="text-xs text-green-500 font-medium mt-1 peer-checked:block hidden">Katta
+                                    summa</span>
+                                <div
+                                    class="absolute top-3 right-3 text-accent opacity-0 peer-checked:opacity-100 transition-opacity">
+                                    <i class="fas fa-check-circle text-xl"></i>
+                                </div>
+
+
+                            </label>
+                        </div>
+                        {% if form.collateral.errors %}
+                        <p class="text-red-500 text-xs mt-1">{{ form.collateral.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-primary to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-5 px-8 rounded-xl shadow-lg shadow-purple-500/30 transform transition hover:-translate-y-1 hover:shadow-xl text-xl flex items-center justify-center gap-3">
+                            <span>🚀 Arizani Yuborish</span>
+                        </button>
+                        <p class="text-center text-xs text-gray-400 mt-4">
+                            Tugmani bosish orqali siz shaxsiy ma'lumotlaringizni qayta ishlashga rozilik bildirasiz. Biz
+                            ma'lumotlaringiz maxfiyligini 100% kafolatlaymiz.
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Services Section -->
+<section id="services" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <span class="text-primary font-bold tracking-wider uppercase text-sm">Bizning Afzalliklar</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">Nega Aynan Pullol?</h2>
+            <div class="w-24 h-1.5 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <!-- Service 1 -->
+            <div
+                class="group bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:-translate-y-2">
+                <div
+                    class="w-20 h-20 bg-blue-50 text-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300 transform group-hover:rotate-6">
+                    <i class="fas fa-bolt text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-gray-800">Tezkor Tasdiqlash</h3>
+                <p class="text-gray-600">Arizangizni ko'rib chiqishga bor-yo'g'i 15 daqiqa vaqt sarflaymiz. Kutish yo'q!
+                </p>
+            </div>
+
+            <!-- Service 2 -->
+            <div
+                class="group bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:-translate-y-2">
+                <div
+                    class="w-20 h-20 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 transform group-hover:rotate-6">
+                    <i class="fas fa-percentage text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-gray-800">Past Foizlar</h3>
+                <p class="text-gray-600">Bozordagi eng raqobatbardosh foiz stavkalari. Yashirin to'lovlarsiz.</p>
+            </div>
+
+            <!-- Service 3 -->
+            <div
+                class="group bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:-translate-y-2">
+                <div
+                    class="w-20 h-20 bg-amber-50 text-accent rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-accent group-hover:text-white transition-all duration-300 transform group-hover:rotate-6">
+                    <i class="fas fa-shield-alt text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-gray-800">To'liq Ishonch</h3>
+                <p class="text-gray-600">Sizning ma'lumotlaringiz xavfsizligi biz uchun eng ustuvor vazifa.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog Section -->
+<section id="blog" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+            <div>
+                <span class="text-accent font-bold tracking-wider uppercase text-sm">Foydali Ma'lumotlar</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">So'nggi Yangiliklar</h2>
+            </div>
+            <a href="#"
+                class="hidden md:inline-flex items-center gap-2 text-primary font-bold hover:text-blue-700 transition-colors mt-4 md:mt-0">
+                Barchasini o'qish <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for post in blog_posts %}
+            <article
+                class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full group">
+                <div class="relative overflow-hidden h-48">
+                    {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}"
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    {% else %}
+                    <div class="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400">
+                        <i class="fas fa-image text-4xl"></i>
+                    </div>
+                    {% endif %}
+                    <div
+                        class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg text-xs font-bold text-primary">
+                        BLOG
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <h3
+                        class="text-xl font-bold text-gray-800 mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                        {{ post.title }}
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                        {{ post.summary }}
+                    </p>
+                    <div
+                        class="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center text-sm text-gray-500">
+                        <span><i class="far fa-calendar-alt mr-1"></i> Bugun</span>
+                        <a href="#" class="text-primary font-medium hover:underline">O'qish</a>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        <div class="mt-10 text-center md:hidden">
+            <a href="#" class="inline-flex items-center gap-2 text-primary font-bold hover:text-blue-700">
+                Barchasini o'qish <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- About Us / Requisites Section -->
+<section id="about" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-primary font-bold tracking-wider uppercase text-sm">Biz Haqimizda</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Kompaniya Rekvizitlari</h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-4"></div>
+            </div>
+
+            <div
+                class="bg-gradient-to-br from-gray-50 to-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12 relative overflow-hidden">
+                <!-- Background decor -->
+                <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-primary/5 blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-accent/5 blur-3xl"></div>
+
+                <div class="relative z-10">
+                    <div class="text-center mb-10">
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 mb-2">«PULLOL BUSINESS MIKROMOLIYA
+                            TASHKILOTI» MChJ</h3>
+                        <p class="text-gray-500 font-medium">Rasmiy faoliyat yurituvchi mikromoliya tashkiloti</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div
+                            class="flex items-start gap-4 p-4 rounded-xl hover:bg-white hover:shadow-sm transition-all">
+                            <div
+                                class="w-12 h-12 bg-blue-100 text-primary rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marked-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Yuridik Manzil</h4>
+                                <p class="text-gray-600 leading-relaxed">
+                                    Toshkent shahri, Yakkasaroy tumani,<br>
+                                    Rakat ko'chasi, 10-uy, 18 xonadon
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="flex items-start gap-4 p-4 rounded-xl hover:bg-white hover:shadow-sm transition-all">
+                            <div
+                                class="w-12 h-12 bg-amber-100 text-yellow-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-file-invoice text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">STIR (INN)</h4>
+                                <p class="text-gray-800 font-mono text-lg font-bold tracking-wide">
+                                    310430149
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="flex items-start gap-4 p-4 rounded-xl hover:bg-white hover:shadow-sm transition-all">
+                            <div
+                                class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone-volume text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Aloqa Markazi</h4>
+                                <a href="tel:+998555100216"
+                                    class="text-gray-800 font-bold text-lg hover:text-primary transition-colors">
+                                    (55) 510 02 16
+                                </a>
+                            </div>
+                        </div>
+
+                        <div
+                            class="flex items-start gap-4 p-4 rounded-xl hover:bg-white hover:shadow-sm transition-all">
+                            <div
+                                class="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-shield-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Ishonchli Hamkor</h4>
+                                <p class="text-gray-600">
+                                    O'zbekiston Respublikasi qonunchiligi asosida faoliyat yuritadi
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-gray-900 text-white relative overflow-hidden">
+    <div class="absolute inset-0 bg-primary/10"></div>
+    <div class="container mx-auto px-4 text-center relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12">Biz Bilan Bog'laning</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div
+                class="bg-white/5 p-8 rounded-2xl backdrop-blur-md border border-white/10 hover:bg-white/10 transition-colors group">
+                <div
+                    class="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6 text-primary group-hover:scale-110 transition-transform">
+                    <i class="fas fa-phone-alt text-2xl"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-2">Qong'iroq Qiling</h3>
+                <p class="text-gray-300 font-mono text-lg">(55) 510 02 16</p>
+            </div>
+
+            <div
+                class="bg-white/5 p-8 rounded-2xl backdrop-blur-md border border-white/10 hover:bg-white/10 transition-colors group">
+                <div
+                    class="w-14 h-14 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6 text-accent group-hover:scale-110 transition-transform">
+                    <i class="fas fa-envelope text-2xl"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-2">Yozib Yuboring</h3>
+                <p class="text-gray-300">info@pullol.uz</p>
+            </div>
+
+            <div
+                class="bg-white/5 p-8 rounded-2xl backdrop-blur-md border border-white/10 hover:bg-white/10 transition-colors group">
+                <div
+                    class="w-14 h-14 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-6 text-purple-400 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-map-marker-alt text-2xl"></i>
+                </div>
+                <h3 class="font-bold text-lg mb-2">Manzil</h3>
+                <p class="text-gray-300">Toshkent sh., Yakkasaroy tumani,<br>Rakat ko'chasi, 10-uy, 18 xonadon</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function calculateLoan() {
+        const amount = parseFloat(document.getElementById('amount').value);
+        const months = parseInt(document.getElementById('months').value);
+        const rate = 0.55; // 55% yil
+        const method = document.querySelector('input[name="method"]:checked').value;
+
+        if (!amount || !months) return;
+
+        const scheduleBody = document.getElementById('schedule-body');
+        scheduleBody.innerHTML = '';
+
+        // Show result
+        document.getElementById('result').classList.remove('hidden');
+        document.getElementById('welcome-message').classList.add('hidden');
+
+        let totalPayment = 0;
+        let remainingAmount = amount;
+        let schedule = [];
+
+        if (method === 'annuity') {
+            const monthlyRate = rate / 12;
+            const x = Math.pow(1 + monthlyRate, months);
+            const monthlyPayment = (amount * x * monthlyRate) / (x - 1);
+
+            // Set monthly display
+            document.getElementById('monthly-payment-display').innerText = Math.round(monthlyPayment).toLocaleString() + " so'm";
+
+            for (let i = 1; i <= months; i++) {
+                const interestPayment = remainingAmount * monthlyRate;
+                const principalPayment = monthlyPayment - interestPayment;
+                remainingAmount -= principalPayment;
+
+                schedule.push({
+                    month: i,
+                    balance: remainingAmount < 0 ? 0 : remainingAmount,
+                    principal: principalPayment,
+                    interest: interestPayment,
+                    total: monthlyPayment
+                });
+                totalPayment += monthlyPayment;
+            }
+        } else {
+            // Differential
+            const monthlyPrincipal = amount / months;
+
+            // For diff, monthly payment changes, so show the first month
+            const firstMonthInterest = amount * (rate / 12);
+            const firstMonthTotal = monthlyPrincipal + firstMonthInterest;
+            document.getElementById('monthly-payment-display').innerText = "~" + Math.round(firstMonthTotal).toLocaleString() + " so'm";
+
+
+            for (let i = 1; i <= months; i++) {
+                const interestPayment = remainingAmount * (rate / 12);
+                const monthlyPayment = monthlyPrincipal + interestPayment;
+                remainingAmount -= monthlyPrincipal;
+
+                schedule.push({
+                    month: i,
+                    balance: remainingAmount < 0 ? 0 : remainingAmount,
+                    principal: monthlyPrincipal,
+                    interest: interestPayment,
+                    total: monthlyPayment
+                });
+                totalPayment += monthlyPayment;
+            }
+        }
+
+        // Render Table
+        schedule.forEach(item => {
+            const row = document.createElement('tr');
+            row.className = "hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-0";
+            row.innerHTML = `
+                <td class="px-2 md:px-3 py-2 md:py-3 font-medium text-gray-900 bg-white sticky left-0 shadow-sm md:shadow-none md:static text-xs md:text-sm">${item.month}</td>
+                <td class="px-2 md:px-3 py-2 md:py-3 text-gray-500 text-[10px] md:text-sm whitespace-nowrap">${Math.round(item.balance).toLocaleString()}</td>
+                <td class="px-2 md:px-3 py-2 md:py-3 text-gray-500 text-[10px] md:text-sm whitespace-nowrap">${Math.round(item.principal).toLocaleString()}</td>
+                <td class="px-2 md:px-3 py-2 md:py-3 text-gray-500 text-[10px] md:text-sm whitespace-nowrap">${Math.round(item.interest).toLocaleString()}</td>
+                <td class="px-2 md:px-3 py-2 md:py-3 font-bold text-primary text-[10px] md:text-sm whitespace-nowrap">${Math.round(item.total).toLocaleString()}</td>
+            `;
+            scheduleBody.appendChild(row);
+        });
+
+        document.getElementById('total-payment-info').innerText = Math.round(totalPayment).toLocaleString() + " so'm";
+    }
+
+    // Format on load
+    document.addEventListener('DOMContentLoaded', () => {
+        const input = document.getElementById('amount-formatted');
+        if (input) {
+            input.value = "5 000 000";
+            formatAmountInput(input);
+        }
+    });
+
+    function formatAmountInput(input) {
+        // Remove non-digits
+        let value = input.value.replace(/\D/g, '');
+
+        // Convert to number for internal storage
+        if (value) {
+            document.getElementById('amount').value = value;
+            // Format number with spaces
+            let formatted = value.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+            input.value = formatted;
+
+            // Sync with Application Form
+            const formInput = document.getElementById('form-credit-display');
+            if (formInput) formInput.value = formatted + " so'm";
+            const formHidden = document.getElementById('form-credit-amount');
+            if (formHidden) formHidden.value = value;
+        } else {
+            document.getElementById('amount').value = '';
+
+            const formInput = document.getElementById('form-credit-display');
+            if (formInput) formInput.value = '';
+            const formHidden = document.getElementById('form-credit-amount');
+            if (formHidden) formHidden.value = '';
+        }
+    }
+
+    // Phone Mask
+    document.addEventListener('DOMContentLoaded', () => {
+        const phoneInput = document.getElementById('phone_number');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.substring(0, 3) !== '998') {
+                    value = '998' + value;
+                }
+
+                let formattedValue = '+998 ';
+                if (value.length > 3) {
+                    formattedValue += '(' + value.substring(3, 5);
+                }
+                if (value.length >= 6) {
+                    formattedValue += ') ' + value.substring(5, 8);
+                }
+                if (value.length >= 9) {
+                    formattedValue += '-' + value.substring(8, 10);
+                }
+                if (value.length >= 11) {
+                    formattedValue += '-' + value.substring(10, 12);
+                }
+
+                e.target.value = formattedValue;
+            });
+            // Initial value if empty
+            if (!phoneInput.value) phoneInput.value = "+998 ";
+        }
+    });
+</script>
+{% endblock %}

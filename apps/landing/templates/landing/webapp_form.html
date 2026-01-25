@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kredit Arizasi</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        :root {
+            --tg-theme-bg-color: #fff;
+            --tg-theme-text-color: #000;
+            --tg-theme-hint-color: #999;
+            --tg-theme-link-color: #2481cc;
+            --tg-theme-button-color: #2481cc;
+            --tg-theme-button-text-color: #fff;
+            --tg-theme-secondary-bg-color: #efeff4;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--tg-theme-secondary-bg-color, #efeff4);
+            color: var(--tg-theme-text-color, #000);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--tg-theme-bg-color, #fff);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 5px;
+            margin-top: 0;
+        }
+
+        p.subtitle {
+            text-align: center;
+            color: var(--tg-theme-hint-color, #999);
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--tg-theme-text-color, #000);
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background-color: var(--tg-theme-bg-color, #fff);
+            color: var(--tg-theme-text-color, #000);
+            font-size: 16px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: var(--tg-theme-button-color, #2481cc);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .radio-option {
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .radio-option input {
+            display: none;
+        }
+
+        .radio-option label {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 0;
+            background-color: var(--tg-theme-bg-color, #fff);
+            transition: all 0.2s;
+        }
+
+        .radio-option input:checked+label {
+            background-color: var(--tg-theme-button-color, #2481cc);
+            color: var(--tg-theme-button-text-color, #fff);
+            border-color: var(--tg-theme-button-color, #2481cc);
+        }
+
+        .main-btn {
+            background-color: var(--tg-theme-button-color, #2481cc);
+            color: var(--tg-theme-button-text-color, #fff);
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>✍️ Ariza topshirish</h1>
+            <p class="subtitle">15 daqiqada pul oling, ortiqcha hujjatlarsiz!</p>
+
+            <form id="applicationForm">
+                <div class="form-group">
+                    <label for="fullName">F.I.SH (To'liq ismingiz)</label>
+                    <input type="text" id="fullName" placeholder="Ism Familiya" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefon raqamingiz</label>
+                    <input type="tel" id="phone" placeholder="+998 90 123 45 67" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="region">Yashash hududingiz</label>
+                    <select id="region" required>
+                        <option value="" disabled selected>Tanlang...</option>
+                        <option value="toshkent_sh">Toshkent shahri</option>
+                        <option value="toshkent_vil">Toshkent viloyati</option>
+                        <option value="andijon">Andijon viloyati</option>
+                        <option value="buxoro">Buxoro viloyati</option>
+                        <option value="fargona">Farg'ona viloyati</option>
+                        <option value="jizzax">Jizzax viloyati</option>
+                        <option value="namangan">Namangan viloyati</option>
+                        <option value="navoiy">Navoiy viloyati</option>
+                        <option value="qashqadaryo">Qashqadaryo viloyati</option>
+                        <option value="samarqand">Samarqand viloyati</option>
+                        <option value="sirdaryo">Sirdaryo viloyati</option>
+                        <option value="surxondaryo">Surxondaryo viloyati</option>
+                        <option value="xorazm">Xorazm viloyati</option>
+                        <option value="qoraqalpogiston">Qoraqalpog'iston Res.</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Kerakli summa</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="amount" id="amt5" value="5000000">
+                            <label for="amt5">5 mln</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="amount" id="amt10" value="10000000">
+                            <label for="amt10">10 mln</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="amount" id="amt20" value="20000000">
+                            <label for="amt20">20 mln</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="amount" id="amt50" value="50000000">
+                            <label for="amt50">50 mln</label>
+                        </div>
+                    </div>
+                    <div style="margin-top: 10px;">
+                        <input type="number" id="customAmount" placeholder="Boshqa summa (so'm)" style="display:none;">
+                        <button type="button" id="toggleCustomAmount"
+                            style="background:none; border:none; color:var(--tg-theme-link-color); cursor:pointer; font-size:14px; margin-top:5px;">Boshqa
+                            summa kiritish</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Garov turi</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="collateral" id="col1" value="mashina" required>
+                            <label for="col1">🚗 Avto</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="collateral" id="col2" value="tilla">
+                            <label for="col2">💍 Tilla</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="collateral" id="col3" value="uy_joy">
+                            <label for="col3">🏠 Uy</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <button class="main-btn" onclick="submitForm()">✅ Arizani yuborish</button>
+    </div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+
+        // Custom amount toggle
+        const customBtn = document.getElementById('toggleCustomAmount');
+        const customInput = document.getElementById('customAmount');
+        const radioInputs = document.querySelectorAll('input[name="amount"]');
+
+        customBtn.addEventListener('click', () => {
+            customInput.style.display = 'block';
+            customInput.focus();
+            // Uncheck radios
+            radioInputs.forEach(r => r.checked = false);
+        });
+
+        radioInputs.forEach(r => {
+            r.addEventListener('change', () => {
+                customInput.style.display = 'none';
+                customInput.value = '';
+            });
+        });
+
+        function submitForm() {
+            const fullName = document.getElementById('fullName').value;
+            const phone = document.getElementById('phone').value;
+            const region = document.getElementById('region').value;
+            let amount = document.querySelector('input[name="amount"]:checked')?.value;
+            const customAmountVal = document.getElementById('customAmount').value;
+            const collateral = document.querySelector('input[name="collateral"]:checked')?.value;
+
+            if (customAmountVal) {
+                amount = customAmountVal;
+            }
+
+            if (!fullName || !phone || !region || !amount || !collateral) {
+                tg.showAlert("Iltimos, barcha maydonlarni to'ldiring!");
+                return;
+            }
+
+            const data = {
+                full_name: fullName,
+                phone: phone,
+                region: region,
+                amount: amount,
+                collateral: collateral
+            };
+
+            tg.sendData(JSON.stringify(data));
+        }
+    </script>
+</body>
+
+</html>

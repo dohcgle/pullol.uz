@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pullol - Ishonchli Moliyaviy Hamkor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366F1', // Indigo-500 (Vivid)
+                        secondary: '#F3F4F6', // Gray-100
+                        accent: '#F59E0B', // Amber-500 (Bright)
+                        success: '#10B981', // Emerald-500
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-XXXXX-Y');
+    </script> -->
+
+    <!-- Facebook Pixel Code -->
+    <!-- <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'YOUR_PIXEL_ID');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
+    /></noscript> -->
+    <!-- End Facebook Pixel Code -->
+</head>
+
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    {% if messages %}
+    <div class="fixed top-24 right-5 z-50 max-w-sm w-full">
+        {% for message in messages %}
+        <div
+            class="transform transition-all duration-300 hover:scale-105 rounded-xl shadow-2xl overflow-hidden mb-4 border-l-4 {% if message.tags == 'success' %}bg-white border-green-500{% elif message.tags == 'error' %}bg-white border-red-500{% else %}bg-white border-blue-500{% endif %}">
+            <div class="p-4 flex items-start">
+                <div class="flex-shrink-0">
+                    {% if message.tags == 'success' %}
+                    <i class="fas fa-check-circle text-green-500 text-2xl"></i>
+                    {% elif message.tags == 'error' %}
+                    <i class="fas fa-exclamation-circle text-red-500 text-2xl"></i>
+                    {% else %}
+                    <i class="fas fa-info-circle text-blue-500 text-2xl"></i>
+                    {% endif %}
+                </div>
+                <div class="ml-3 w-0 flex-1 pt-0.5">
+                    <p class="text-sm font-medium text-gray-900">
+                        {% if message.tags == 'success' %}Muvaffaqiyat!{% elif message.tags == 'error' %}Xatolik!{% else
+                        %}Malumot{% endif %}
+                    </p>
+                    <p class="mt-1 text-sm text-gray-500">
+                        {{ message }}
+                    </p>
+                </div>
+                <div class="ml-4 flex-shrink-0 flex">
+                    <button onclick="this.parentElement.parentElement.parentElement.remove()"
+                        class="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <span class="sr-only">Yopish</span>
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <header class="bg-white/90 backdrop-blur-md shadow-md fixed w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-3xl font-extrabold text-primary flex items-center gap-2 tracking-tight">
+                        <i class="fas fa-wallet text-accent"></i>
+                        Pullol
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-600 hover:text-primary font-medium transition-colors">Bosh
+                        sahifa</a>
+                    <a href="#services"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors">Xizmatlar</a>
+                    <a href="#calculator"
+                        class="text-gray-600 hover:text-primary font-medium transition-colors">Kalkulyator</a>
+                    <a href="#blog" class="text-gray-600 hover:text-primary font-medium transition-colors">Blog</a>
+                    <a href="#about" class="text-gray-600 hover:text-primary font-medium transition-colors">Biz
+                        haqimizda</a>
+                    <a href="#contact" class="text-gray-600 hover:text-primary font-medium transition-colors">Aloqa</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden md:flex">
+                    <a href="#application"
+                        class="bg-gradient-to-r from-primary to-purple-600 text-white px-6 py-2.5 rounded-full font-bold hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
+                        Ariza qoldirish
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="mobile-menu-button focus:outline-none text-gray-600 hover:text-primary">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden md:hidden bg-white border-t">
+            <a href="#home" class="block py-2 px-4 text-sm hover:bg-gray-50 text-gray-700">Bosh sahifa</a>
+            <a href="#services" class="block py-2 px-4 text-sm hover:bg-gray-50 text-gray-700">Xizmatlar</a>
+            <a href="#calculator" class="block py-2 px-4 text-sm hover:bg-gray-50 text-gray-700">Kalkulyator</a>
+            <a href="#blog" class="block py-2 px-4 text-sm hover:bg-gray-50 text-gray-700">Blog</a>
+            <a href="#about" class="block py-2 px-4 text-sm hover:bg-gray-50 text-gray-700">Biz haqimizda</a>
+            <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-50 text-gray-700">Aloqa</a>
+            <a href="#application" class="block py-2 px-4 text-sm font-bold text-primary">Ariza qoldirish</a>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-16">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="text-2xl font-bold flex items-center gap-2">
+                        <i class="fas fa-wallet text-accent"></i> Pullol
+                    </div>
+                    <p class="text-gray-400 mt-2 text-sm">Sizning ishonchli moliyaviy yemchingiz</p>
+                </div>
+                <div class="text-gray-400 text-sm text-right">
+                    <p>&copy; 2026 Barcha huquqlar himoyalangan.</p>
+                    <p class="mt-1 text-xs text-gray-500">Ishlab chiqildi: <span class="text-gray-400">Ulugbek
+                            Taylakov</span>, +998909710111</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.querySelector("button.mobile-menu-button");
+        const menu = document.querySelector(".mobile-menu");
+
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+        });
+    </script>
+</body>
+
+</html>
