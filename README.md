@@ -18,7 +18,7 @@ Loyihaning barcha fayllari (`Dockerfile`, `docker-compose.yml`, `requirements.tx
 Terminalni oching va loyiha papkasida quyidagi buyruqni bering:
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 Bu buyruq quyidagilarni bajaradi:
