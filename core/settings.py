@@ -18,6 +18,7 @@ SECRET_KEY = 'change_me_in_production'
 # Telegram Bot Token
 BOT_TOKEN = os.environ.get('BOT_TOKEN', '8485734248:AAGZcFyPhFCBKviEAy0RgzK_lX3J1G3KgsE')
 ADMIN_CHAT_ID = os.environ.get('ADMIN_CHAT_ID')
+TELEGRAM_CHANNEL_ID = os.environ.get('TELEGRAM_CHANNEL_ID')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!

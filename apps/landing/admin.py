@@ -3,7 +3,7 @@ from .models import Application, BlogPost
 
 @admin.register(Application)
 class ApplicationAdmin(admin.ModelAdmin):
-    list_display = ('full_name', 'phone_number', 'credit_amount', 'region', 'collateral', 'source', 'created_at')
+    list_display = ('id', 'full_name', 'phone_number', 'credit_amount', 'region', 'collateral', 'source', 'created_at')
     list_filter = ('source', 'region', 'collateral', 'created_at')
     search_fields = ('full_name', 'phone_number')
 

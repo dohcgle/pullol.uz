@@ -6,4 +6,3 @@ class ApplicationStates(StatesGroup):
     region = State()
     credit_amount = State()
     collateral = State()
-    confirm = State()
