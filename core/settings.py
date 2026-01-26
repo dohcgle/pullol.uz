@@ -26,6 +26,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '192.168.1.224', 'pullol.uz', 'www.pullol.uz']
 
+CSRF_TRUSTED_ORIGINS = ['https://pullol.uz', 'https://www.pullol.uz']
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 # Application definition
 
 INSTALLED_APPS = [
