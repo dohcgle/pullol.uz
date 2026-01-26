@@ -20,6 +20,7 @@ services:
       - 8000
     depends_on:
       - db
+      - redis
     env_file:
       - .env
     restart: always
@@ -31,6 +32,7 @@ services:
       - .:/app
     depends_on:
       - db
+      - redis
     env_file:
       - .env
     restart: always
@@ -44,6 +46,16 @@ services:
       - POSTGRES_USER=core_user
       - POSTGRES_PASSWORD=core_password
     restart: always
+
+  redis:
+    image: redis:alpine
+    restart: always
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    restart: always
+    network_mode: "host"
+    command: tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
 
 volumes:
   postgres_data:
