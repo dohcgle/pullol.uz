@@ -1,3 +1,10 @@
+import os
+import django
+import sys
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
+django.setup()
+
 from apps.landing.models import BlogPost
 from django.core.files.base import ContentFile
 import requests

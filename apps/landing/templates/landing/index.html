@@ -20,7 +20,7 @@
                 <span class="text-accent">Erkinlik</span> Sari Yo'l
             </h1>
             <p class="text-lg md:text-xl text-blue-100 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
-                Pullol bilan orzularingizni ro'yobga chiqarish endi yanada oson. Garovsiz, tezkor va shaffof
+                Pullol bilan orzularingizni ro'yobga chiqarish endi yanada oson. Garov evaziga, tezkor va shaffof
                 mikrokreditlar.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
@@ -73,10 +73,24 @@
                             <div class="relative">
                                 <span class="absolute left-4 top-1/2 -translate-y-1/2 text-primary text-xl"><i
                                         class="fas fa-coins"></i></span>
-                                <input type="text" id="amount-formatted" placeholder="5 000 000"
+                                <input type="text" id="amount-formatted" placeholder="Summani kiriting"
                                     class="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-primary/20 focus:border-accent focus:ring-4 focus:ring-accent/20 outline-none transition-all bg-white font-bold text-xl text-gray-800 tracking-wide shadow-inner"
                                     required oninput="formatAmountInput(this)">
-                                <input type="hidden" id="amount" value="5000000">
+                                <input type="hidden" id="amount" value="">
+                            </div>
+                            <div class="flex gap-2 mt-3 overflow-x-auto pb-1 noscrollbar">
+                                <button type="button" onclick="setAmount(5000000)"
+                                    class="bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 border border-transparent hover:border-gray-300 text-xs font-bold py-2 px-3 rounded-lg transition-all whitespace-nowrap">5
+                                    mln</button>
+                                <button type="button" onclick="setAmount(10000000)"
+                                    class="bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 border border-transparent hover:border-gray-300 text-xs font-bold py-2 px-3 rounded-lg transition-all whitespace-nowrap">10
+                                    mln</button>
+                                <button type="button" onclick="setAmount(25000000)"
+                                    class="bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 border border-transparent hover:border-gray-300 text-xs font-bold py-2 px-3 rounded-lg transition-all whitespace-nowrap">25
+                                    mln</button>
+                                <button type="button" onclick="setAmount(50000000)"
+                                    class="bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 border border-transparent hover:border-gray-300 text-xs font-bold py-2 px-3 rounded-lg transition-all whitespace-nowrap">50
+                                    mln</button>
                             </div>
                             <div class="flex justify-between mt-2 text-xs font-bold text-gray-400">
                                 <span>Min: 1 000 000</span>
@@ -142,7 +156,7 @@
 
                         <button type="button" onclick="calculateLoan()"
                             class="w-full bg-gradient-to-r from-accent to-amber-500 hover:from-amber-400 hover:to-orange-500 text-white font-extrabold py-5 px-6 rounded-xl shadow-lg shadow-amber-500/40 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl flex items-center justify-center gap-3 text-xl group relative overflow-hidden">
-                            <span class="relative z-10">💰 Kreditni Hisoblash</span>
+                            <span class="relative z-10">💰 Kreditni hisoblash</span>
                             <div
                                 class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:animate-shine">
                             </div>
@@ -162,7 +176,7 @@
                             class="w-28 h-28 bg-gradient-to-br from-gray-50 to-gray-100 rounded-full flex items-center justify-center shadow-inner mb-6 border border-gray-100">
                             <i class="fas fa-hand-holding-usd text-5xl text-gray-300"></i>
                         </div>
-                        <h4 class="text-xl font-bold text-gray-600 mb-2">Sizning Imkoniyatingiz</h4>
+                        <h4 class="text-xl font-bold text-gray-600 mb-2">Sizning imkoniyatingiz</h4>
                         <p class="text-gray-400 max-w-xs mx-auto">Kredit ma'lumotlarini kiriting va qancha
                             to'lashingizni bilib oling</p>
                     </div>
@@ -223,7 +237,7 @@
                 <span class="inline-block py-1 px-3 rounded-full bg-green-100 text-green-600 text-sm font-bold mb-4">
                     <i class="fas fa-check"></i> 100% Online
                 </span>
-                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Orzuyingizdagi Mablag'ni Oling</h2>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Orzuyingizdagi mablag'ni oling</h2>
                 <p class="text-gray-600 text-lg">Hozir ariza qoldiring va 15 daqiqada javob oling. Bu juda oson!</p>
             </div>
 
@@ -384,8 +398,9 @@
 <section id="services" class="py-20 bg-white">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-            <span class="text-primary font-bold tracking-wider uppercase text-sm">Bizning Afzalliklar</span>
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">Nega Aynan Pullol?</h2>
+            <span class="text-primary font-bold tracking-wider uppercase text-sm">Bizning afzalliklar</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">Nega aynan "PullOl Mikromoliya
+                Tashkiloti"?</h2>
             <div class="w-24 h-1.5 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
         </div>
 
@@ -397,7 +412,7 @@
                     class="w-20 h-20 bg-blue-50 text-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300 transform group-hover:rotate-6">
                     <i class="fas fa-bolt text-3xl"></i>
                 </div>
-                <h3 class="text-xl font-bold mb-3 text-gray-800">Tezkor Tasdiqlash</h3>
+                <h3 class="text-xl font-bold mb-3 text-gray-800">Tezkor tasdiqlash</h3>
                 <p class="text-gray-600">Arizangizni ko'rib chiqishga bor-yo'g'i 15 daqiqa vaqt sarflaymiz. Kutish yo'q!
                 </p>
             </div>
@@ -409,7 +424,7 @@
                     class="w-20 h-20 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 transform group-hover:rotate-6">
                     <i class="fas fa-percentage text-3xl"></i>
                 </div>
-                <h3 class="text-xl font-bold mb-3 text-gray-800">Past Foizlar</h3>
+                <h3 class="text-xl font-bold mb-3 text-gray-800">Past foizlar</h3>
                 <p class="text-gray-600">Bozordagi eng raqobatbardosh foiz stavkalari. Yashirin to'lovlarsiz.</p>
             </div>
 
@@ -420,7 +435,7 @@
                     class="w-20 h-20 bg-amber-50 text-accent rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-accent group-hover:text-white transition-all duration-300 transform group-hover:rotate-6">
                     <i class="fas fa-shield-alt text-3xl"></i>
                 </div>
-                <h3 class="text-xl font-bold mb-3 text-gray-800">To'liq Ishonch</h3>
+                <h3 class="text-xl font-bold mb-3 text-gray-800">To'liq ishonch</h3>
                 <p class="text-gray-600">Sizning ma'lumotlaringiz xavfsizligi biz uchun eng ustuvor vazifa.</p>
             </div>
         </div>
@@ -431,8 +446,8 @@
     <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between items-end mb-12">
             <div>
-                <span class="text-accent font-bold tracking-wider uppercase text-sm">Foydali Ma'lumotlar</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">So'nggi Yangiliklar</h2>
+                <span class="text-accent font-bold tracking-wider uppercase text-sm">Foydali ma'lumotlar</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">So'nggi yangiliklar</h2>
             </div>
             <a href="#"
                 class="hidden md:inline-flex items-center gap-2 text-primary font-bold hover:text-blue-700 transition-colors mt-4 md:mt-0">
@@ -492,8 +507,8 @@
     <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-12">
-                <span class="text-primary font-bold tracking-wider uppercase text-sm">Biz Haqimizda</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Kompaniya Rekvizitlari</h2>
+                <span class="text-primary font-bold tracking-wider uppercase text-sm">Biz haqimizda</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2">Kompaniya rekvizitlari</h2>
                 <div class="w-24 h-1.5 bg-gradient-to-r from-primary to-accent mx-auto rounded-full mt-4"></div>
             </div>
 
@@ -505,7 +520,7 @@
 
                 <div class="relative z-10">
                     <div class="text-center mb-10">
-                        <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 mb-2">«PULLOL BUSINESS MIKROMOLIYA
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-gray-800 mb-2">«PULLOL MIKROMOLIYA
                             TASHKILOTI» MChJ</h3>
                         <p class="text-gray-500 font-medium">Rasmiy faoliyat yurituvchi mikromoliya tashkiloti</p>
                     </div>
@@ -550,7 +565,7 @@
                                 <h4 class="font-bold text-gray-900 mb-1">Aloqa Markazi</h4>
                                 <a href="tel:+998555100216"
                                     class="text-gray-800 font-bold text-lg hover:text-primary transition-colors">
-                                    (55) 510 02 16
+                                    (77) 120-70-20
                                 </a>
                             </div>
                         </div>
@@ -562,7 +577,7 @@
                                 <i class="fas fa-shield-alt text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-gray-900 mb-1">Ishonchli Hamkor</h4>
+                                <h4 class="font-bold text-gray-900 mb-1">Ishonchli hamkor</h4>
                                 <p class="text-gray-600">
                                     O'zbekiston Respublikasi qonunchiligi asosida faoliyat yuritadi
                                 </p>
@@ -579,7 +594,7 @@
 <section id="contact" class="py-20 bg-gray-900 text-white relative overflow-hidden">
     <div class="absolute inset-0 bg-primary/10"></div>
     <div class="container mx-auto px-4 text-center relative z-10">
-        <h2 class="text-3xl md:text-4xl font-bold mb-12">Biz Bilan Bog'laning</h2>
+        <h2 class="text-3xl md:text-4xl font-bold mb-12">Biz bilan bog'laning</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div
@@ -588,8 +603,8 @@
                     class="w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6 text-primary group-hover:scale-110 transition-transform">
                     <i class="fas fa-phone-alt text-2xl"></i>
                 </div>
-                <h3 class="font-bold text-lg mb-2">Qong'iroq Qiling</h3>
-                <p class="text-gray-300 font-mono text-lg">(55) 510 02 16</p>
+                <h3 class="font-bold text-lg mb-2">Qong'iroq qiling</h3>
+                <p class="text-gray-300 font-mono text-lg">(77) 120-70-20</p>
             </div>
 
             <div
@@ -598,7 +613,7 @@
                     class="w-14 h-14 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6 text-accent group-hover:scale-110 transition-transform">
                     <i class="fas fa-envelope text-2xl"></i>
                 </div>
-                <h3 class="font-bold text-lg mb-2">Yozib Yuboring</h3>
+                <h3 class="font-bold text-lg mb-2">Yozib yuboring</h3>
                 <p class="text-gray-300">info@pullol.uz</p>
             </div>
 
@@ -704,10 +719,18 @@
     document.addEventListener('DOMContentLoaded', () => {
         const input = document.getElementById('amount-formatted');
         if (input) {
-            input.value = "5 000 000";
+            input.value = "";
             formatAmountInput(input);
         }
     });
+
+    function setAmount(amount) {
+        const input = document.getElementById('amount-formatted');
+        if (input) {
+            input.value = amount.toString();
+            formatAmountInput(input);
+        }
+    }
 
     function formatAmountInput(input) {
         // Remove non-digits
